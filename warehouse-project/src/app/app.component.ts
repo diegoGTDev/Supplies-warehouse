@@ -7,5 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'warehouse-project';
-  showFiller : Boolean = false;
 }
