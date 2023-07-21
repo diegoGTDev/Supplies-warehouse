@@ -6,7 +6,7 @@ import { RequirementRequestComponent } from './requirement-request/requirement-r
 const routes: Routes = [
   {
     path: '', component: PagesComponent, children: [
-      { path: 'requirement', component: RequirementRequestComponent },
+      { path: 'requirement/request', component: RequirementRequestComponent },
     ]
   }
 ];
