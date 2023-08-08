@@ -6,7 +6,9 @@ import { PagesComponent } from './pages.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { ReusableModule } from '../reusable/reusable.module';
 import { NotFoundComponent } from '../not-found/not-found.component';
-import { RequirementRequestComponent } from './requirement-request/requirement-request.component';
+import { RequirementRequestComponent } from './requirement/requirement-request/requirement-request.component';
+import { RequirementAllComponent } from './requirement/requirement-all/requirement-all.component';
+import { InventoryComponent } from './inventory/inventory.component';
 
 
 @NgModule({
@@ -14,7 +16,9 @@ import { RequirementRequestComponent } from './requirement-request/requirement-r
     PagesComponent,
     NavigationComponent,
     NotFoundComponent,
-    RequirementRequestComponent
+    RequirementRequestComponent,
+    RequirementAllComponent,
+    InventoryComponent
   ],
   imports: [
     CommonModule,
