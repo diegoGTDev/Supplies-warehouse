@@ -1,4 +1,4 @@
-export interface Item{
+export interface Iitem{
     code : string;
     name : string;
     description: string;
@@ -6,4 +6,5 @@ export interface Item{
     unit: number;
     measure: number;
     location: number;
+    quantity: number;
 }
