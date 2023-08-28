@@ -2,9 +2,9 @@ export interface Iitem{
     code : string;
     name : string;
     description: string;
-    category : number;
+    category : string;
     unit: number;
     measure: number;
-    location: number;
-    quantity: number;
+    material: string;
+    location: string;
 }
