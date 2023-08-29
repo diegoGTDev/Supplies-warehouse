@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { NewRequiModalComponent } from 'src/app/components/modals/new-requi-modal/new-requi-modal.component';
+import { Iitem } from 'src/app/models/Iitem';
 export interface PeriodicElement {
   name: string;
   position: number;
@@ -25,7 +28,26 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class RequirementRequestComponent {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = ELEMENT_DATA;
+  // displayedColumns: string[] = ['code', 'name', 'description', 'category',"material", 'unit', 'quantity'];
+  itemsRequested: Iitem[] = [];
+  dataSource = ELEMENT_DATA
+  constructor(public dialog: MatDialog) { }
 
+  openModal(){
+    const dialogRef = this.dialog.open(NewRequiModalComponent, {
+      width: '600px',
+      data: {items : this.itemsRequested}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+  test(){
+    console.log(this.itemsRequested);
+  }
+  sendRequirement(){
+    //Working on...
+  }
   
 }

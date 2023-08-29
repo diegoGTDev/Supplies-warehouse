@@ -6,7 +6,8 @@
             <input matInput placeholder="Description" name="description">
         </mat-form-field>
     </form>
-    <button mat-flat-button color="primary">Add item</button>
+    <button mat-flat-button color="primary" (click)="openModal()">Add item</button>
+    <button mat-flat-button color="primary" (click)="test()">Test</button>
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     
         <!--- Note that these columns can be defined in any order.
