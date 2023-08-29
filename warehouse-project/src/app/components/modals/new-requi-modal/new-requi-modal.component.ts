@@ -19,7 +19,7 @@ export interface PeriodicElement {
 
 export class NewRequiModalComponent {
 
-  Item!: any;
+  Item!: Iitem;
   requi_item_form = this._formBuilder.group({
     code: ['', Validators.required],
     name: ['' , Validators.required],
@@ -38,8 +38,17 @@ export class NewRequiModalComponent {
     this.Item = {
       'code' :this.requi_item_form.value.code!,
       'name' :this.requi_item_form.value.name!,
-      'unit': this.requi_item_form.value.unit!
+      'unit': Number(this.requi_item_form.value.unit)!,
+      'description': '',
+      'category': '',
+      'measure': 0,
+      'material': '',
+      'location': '',
+      'quantity': 0,
+
+
     };
+
     this.data.items.push(this.Item);
     this.close();
   }
