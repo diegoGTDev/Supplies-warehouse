@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\Diego\\Documents\\Programación\\Supplies-warehouse\\WebService\\WebService\\WebService\\WebService.csproj": {}
+    "c:\\Users\\PC\\Documents\\Programacion\\Portfolio\\Bodega de Insumos\\App_Bodega\\WebService\\WebService\\WebService\\WebService.csproj": {}
   },
   "projects": {
-    "c:\\Users\\Diego\\Documents\\Programación\\Supplies-warehouse\\WebService\\WebService\\WebService\\WebService.csproj": {
+    "c:\\Users\\PC\\Documents\\Programacion\\Portfolio\\Bodega de Insumos\\App_Bodega\\WebService\\WebService\\WebService\\WebService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\Diego\\Documents\\Programación\\Supplies-warehouse\\WebService\\WebService\\WebService\\WebService.csproj",
+        "projectUniqueName": "c:\\Users\\PC\\Documents\\Programacion\\Portfolio\\Bodega de Insumos\\App_Bodega\\WebService\\WebService\\WebService\\WebService.csproj",
         "projectName": "WebService",
-        "projectPath": "c:\\Users\\Diego\\Documents\\Programación\\Supplies-warehouse\\WebService\\WebService\\WebService\\WebService.csproj",
-        "packagesPath": "C:\\Users\\Diego\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\Diego\\Documents\\Programación\\Supplies-warehouse\\WebService\\WebService\\WebService\\obj\\",
+        "projectPath": "c:\\Users\\PC\\Documents\\Programacion\\Portfolio\\Bodega de Insumos\\App_Bodega\\WebService\\WebService\\WebService\\WebService.csproj",
+        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
+        "outputPath": "c:\\Users\\PC\\Documents\\Programacion\\Portfolio\\Bodega de Insumos\\App_Bodega\\WebService\\WebService\\WebService\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Diego\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\sdk\\7.0.302\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -64,7 +65,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }
