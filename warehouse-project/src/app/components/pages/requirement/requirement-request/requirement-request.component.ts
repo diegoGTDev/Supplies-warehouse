@@ -13,7 +13,6 @@ export class RequirementRequestComponent {
   //displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   displayedColumns: string[] = ['code', 'name', 'description',  'material', 'category', 'measure','unit', 'quantity'];
   itemsRequested: Iitem[] = [
-    {code: '0001', name: 'Item 1', unit: 22, quantity: 1, description: 'Description 1', material: 'Material 1', category: 'Category 1', measure: 1, location: 'Location 1'},
   ];
   dataSource = new MatTableDataSource<Iitem>();
   constructor(public dialog: MatDialog) { 
