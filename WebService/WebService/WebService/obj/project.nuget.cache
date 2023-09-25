@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "6xfZAaFHu6i8o09JrfdNxzDothyWDYZ7d2kCf+3l/+0kZSkCpBdi8rOV29sr/gRtK8uY5uFNvZx71H67OuDzAQ==",
+  "dgSpecHash": "gRNxbSXIqJuP+DGqb04pOQ/xUTeRrfmJEPgcUfxWppE418QXfBd5TLjVRgHspy5605d3mAK7uVDOVkqua6hYxw==",
   "success": true,
   "projectFilePath": "c:\\Users\\PC\\Documents\\Programacion\\Portfolio\\Bodega de Insumos\\App_Bodega\\WebService\\WebService\\WebService\\WebService.csproj",
   "expectedPackageFiles": [
@@ -11,12 +11,5 @@
     "C:\\Users\\PC\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problema al leer el archivo de caché c:\\Users\\PC\\Documents\\Programacion\\Portfolio\\Bodega de Insumos\\App_Bodega\\WebService\\WebService\\WebService\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  "logs": []
 }

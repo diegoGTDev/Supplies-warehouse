@@ -15,7 +15,7 @@ export class RequirementRequestComponent {
   itemsRequested: Iitem[] = [
   ];
   dataSource = new MatTableDataSource<Iitem>();
-  constructor(public dialog: MatDialog) { 
+  constructor(public dialog: MatDialog) {
     this.dataSource.data = this.itemsRequested;
   }
 
@@ -36,5 +36,5 @@ export class RequirementRequestComponent {
   sendRequirement(){
     //Working on...
   }
-  
+
 }

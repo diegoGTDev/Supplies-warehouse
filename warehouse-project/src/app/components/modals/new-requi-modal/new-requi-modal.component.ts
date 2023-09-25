@@ -13,16 +13,16 @@ export interface PeriodicElement {
 @Component({
   selector: 'app-new-requi-modal',
   templateUrl: './new-requi-modal.component.html',
-  styleUrls: ['./new-requi-modal.component.scss']
+  styleUrls: ['./new-requi-modal.component.scss'],
 })
 
 
 export class NewRequiModalComponent {
-
+  dataSource : any = [];
   Item!: Iitem;
   requi_item_form = this._formBuilder.group({
-    code: ['', Validators.required],
-    name: ['' , Validators.required],
+    code: ['', ],
+    name: ['' , ],
     unit: ['', Validators.required],
 
   });
@@ -54,7 +54,7 @@ export class NewRequiModalComponent {
   }
 
   close(){
-    
+
     this._dialogRef.close();
     return "Hello";
   }

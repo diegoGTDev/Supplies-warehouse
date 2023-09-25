@@ -23,6 +23,6 @@ import { NewRequiModalComponent } from './components/modals/new-requi-modal/new-
     ReusableModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

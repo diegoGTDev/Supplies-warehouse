@@ -25,7 +25,7 @@ import { MatListModule } from '@angular/material/list';
 
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -43,7 +43,6 @@ import { MatNativeDateModule } from '@angular/material/core';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-
     CommonModule,
     MatCardModule,
     MatButtonModule,
@@ -72,7 +71,6 @@ import { MatNativeDateModule } from '@angular/material/core';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-
     CommonModule,
     MatCardModule,
     MatButtonModule,
