@@ -11,7 +11,7 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class RequirementRequestComponent {
   //displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  displayedColumns: string[] = ['code', 'name', 'description',  'material', 'category', 'measure','unit', 'quantity'];
+  displayedColumns: string[] = ['code', 'name', 'description',  'material', 'category', 'measure','unit', 'quantity', 'actions'];
   itemsRequested: Iitem[] = [
   ];
   dataSource = new MatTableDataSource<Iitem>();
@@ -35,6 +35,11 @@ export class RequirementRequestComponent {
   }
   sendRequirement(){
     //Working on...
+  }
+  deleteElement(element : Iitem){
+    const index = this.itemsRequested.indexOf(element);
+    this.itemsRequested.splice(index,1);
+    this.dataSource.data = this.itemsRequested;
   }
 
 }
