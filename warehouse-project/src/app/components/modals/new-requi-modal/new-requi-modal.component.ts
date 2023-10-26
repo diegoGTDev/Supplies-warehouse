@@ -1,8 +1,9 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { Iitem } from '../../../models/Iitem';
+import { Iitem } from '../../../core/models/Iitem';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ItemService } from 'src/app/services/item.service';
 export interface PeriodicElement {
   name: string;
   position: number;
@@ -15,47 +16,57 @@ export interface PeriodicElement {
   templateUrl: './new-requi-modal.component.html',
   styleUrls: ['./new-requi-modal.component.scss'],
 })
-
-
 export class NewRequiModalComponent {
-  dataSource : any = [];
+  dataSource: any = [];
   Item!: Iitem;
   requi_item_form = this._formBuilder.group({
-    code: ['', ],
-    name: ['' , ],
+    code: [''],
+    name: [''],
     unit: ['', Validators.required],
-
   });
 
-  constructor(private _formBuilder : FormBuilder,
-              private _dialogRef : MatDialogRef<NewRequiModalComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: {items: Iitem[]}) { }
+  constructor(
+    private _formBuilder: FormBuilder,
+    private _dialogRef: MatDialogRef<NewRequiModalComponent>,
+    private _itemService: ItemService,
+    @Inject(MAT_DIALOG_DATA) public data: { items: Iitem[] }
+  ) {}
 
-  addNewItem(){
+  //*Gets all the items from the backend
+  ngOnInit(): void {
+    console.info('Getting all the items from the backend: ');
+    this._itemService.getItems().subscribe((data: any) => {
+      console.log(data);
+      this.dataSource = data;
+    });
+  }
+  //*Adds a item
+  addNewItem() {
     // this.Conceptos.push(this.requi_item_form.value);
     // this.requi_item_form.reset();
+    console.info('Getting all the items from the backend: ');
+    this._itemService.getItems().subscribe((data: any) => {
+      console.log(data);
+      this.dataSource = data;
+    });
     console.log(this.requi_item_form.value);
     this.Item = {
-      'code' :this.requi_item_form.value.code!,
-      'name' :this.requi_item_form.value.name!,
-      'unit': Number(this.requi_item_form.value.unit)!,
-      'description': '',
-      'category': '',
-      'measure': 0,
-      'material': '',
-      'location': '',
-      'quantity': 0,
-
-
+      code: this.requi_item_form.value.code!,
+      name: this.requi_item_form.value.name!,
+      description: '',
+      category: '',
+      measure: 0,
+      material: '',
+      location: '',
+      quantity: 0,
     };
 
     this.data.items.push(this.Item);
     this.close();
   }
 
-  close(){
-
+  close() {
     this._dialogRef.close();
-    return "Hello";
+    return 'Hello';
   }
 }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\PC\\Documents\\Programacion\\Portfolio\\Bodega de Insumos\\App_Bodega\\WebService\\WebService\\WebService\\WebService.csproj": {}
+    "C:\\Users\\PC\\Documents\\Programacion\\Portfolio\\Bodega de Insumos\\App_Bodega\\WebService\\WebService\\WebService\\WebService.csproj": {}
   },
   "projects": {
-    "c:\\Users\\PC\\Documents\\Programacion\\Portfolio\\Bodega de Insumos\\App_Bodega\\WebService\\WebService\\WebService\\WebService.csproj": {
+    "C:\\Users\\PC\\Documents\\Programacion\\Portfolio\\Bodega de Insumos\\App_Bodega\\WebService\\WebService\\WebService\\WebService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\PC\\Documents\\Programacion\\Portfolio\\Bodega de Insumos\\App_Bodega\\WebService\\WebService\\WebService\\WebService.csproj",
+        "projectUniqueName": "C:\\Users\\PC\\Documents\\Programacion\\Portfolio\\Bodega de Insumos\\App_Bodega\\WebService\\WebService\\WebService\\WebService.csproj",
         "projectName": "WebService",
-        "projectPath": "c:\\Users\\PC\\Documents\\Programacion\\Portfolio\\Bodega de Insumos\\App_Bodega\\WebService\\WebService\\WebService\\WebService.csproj",
+        "projectPath": "C:\\Users\\PC\\Documents\\Programacion\\Portfolio\\Bodega de Insumos\\App_Bodega\\WebService\\WebService\\WebService\\WebService.csproj",
         "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\PC\\Documents\\Programacion\\Portfolio\\Bodega de Insumos\\App_Bodega\\WebService\\WebService\\WebService\\obj\\",
+        "outputPath": "C:\\Users\\PC\\Documents\\Programacion\\Portfolio\\Bodega de Insumos\\App_Bodega\\WebService\\WebService\\WebService\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,6 +40,20 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.23, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[6.0.23, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.23, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.2.3, )"

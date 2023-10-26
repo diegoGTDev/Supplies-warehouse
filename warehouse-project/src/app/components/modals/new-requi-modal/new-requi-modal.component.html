@@ -16,16 +16,24 @@
       </mat-form-field>
     </form>
     <table style="width: 100%; text-align: right;">
-      <tr>
-          <th>Id</th>
-          <th>Cantidad</th>
-          <th>Importe</th>
-      </tr>
-      <tr>
-          <td>asd</td>
-          <td>asd</td>
-          <td>asd</td>
-      </tr>
+      <thead>
+        <tr>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Measure</th>
+            <th>Material</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of dataSource; let i = index">
+          <td>{{item.code}}</td>
+          <td>{{item.name}}</td>
+          <td>{{item.quantity}}</td>
+          <td>{{item.measure}}</td>
+          <td>{{item.material}}</td>
+        </tr>
+      </tbody>
   </table>
     <div mat-dialog-actions>
       <button mat-raised-button color="primary" (click)="addNewItem()">Save</button>

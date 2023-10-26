@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { NewRequiModalComponent } from 'src/app/components/modals/new-requi-modal/new-requi-modal.component';
-import { Iitem } from 'src/app/models/Iitem';
+import { Iitem } from 'src/app/core/models/Iitem';
 import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
@@ -21,7 +21,7 @@ export class RequirementRequestComponent {
 
   openModal(){
     const dialogRef = this.dialog.open(NewRequiModalComponent, {
-      width: '600px',
+      width: '900px',
       data: {items : this.itemsRequested}
     });
 

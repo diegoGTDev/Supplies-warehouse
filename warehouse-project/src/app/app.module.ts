@@ -6,14 +6,16 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
-import { LoginComponent } from './components/login/login.component';
-import { ReusableModule } from './components/reusable/reusable.module';
+import { LoginComponent } from './public/auth/login/containers/login/login.component';
+
 import { NewRequiModalComponent } from './components/modals/new-requi-modal/new-requi-modal.component';
+import { PublicModule } from './public/public.module';
+import { PublicRoutingModule } from './public/public-routing.module';
+import { ReusableModule } from './components/reusable/reusable.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
     NewRequiModalComponent,
   ],
   imports: [
