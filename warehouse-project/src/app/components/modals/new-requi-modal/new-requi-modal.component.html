@@ -4,11 +4,11 @@
     <form [formGroup]="requi_item_form" class="form">
       <mat-form-field>
         <mat-label>Code</mat-label>
-        <input matInput formControlName="code">
+        <input matInput formControlName="code" (ngModelChange)="searchItem()">
       </mat-form-field>
       <mat-form-field>
         <mat-label>Name</mat-label>
-        <input matInput formControlName="name">
+        <input matInput formControlName="name" (ngModelChange)="searchItem()">
       </mat-form-field>
       <mat-form-field>
         <mat-label>Unit</mat-label>
@@ -26,17 +26,17 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of dataSource; let i = index">
-          <td>{{item.code}}</td>
-          <td>{{item.name}}</td>
-          <td>{{item.quantity}}</td>
-          <td>{{item.measure}}</td>
-          <td>{{item.material}}</td>
+        <tr style="cursor:pointer " *ngFor="let item of filteredSource; let i = index" (click) = "getItemSelected($event)">
+          <td class="item-code">{{item.code}}</td>
+          <td class="item-name">{{item.name}}</td>
+          <td class="item-quantity">{{item.quantity}}</td>
+          <td class="item-measure">{{item.measure}}</td>
+          <td class="item-material">{{item.material}}</td>
         </tr>
       </tbody>
   </table>
     <div mat-dialog-actions>
-      <button mat-raised-button color="primary" (click)="addNewItem()">Save</button>
+      <button mat-raised-button color="primary">Save</button>
       <button mat-raised-button color="warn" (click)="close()">Cancel</button>
     </div>
   </div>

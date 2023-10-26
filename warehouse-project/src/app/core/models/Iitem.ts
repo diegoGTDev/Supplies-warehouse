@@ -6,5 +6,5 @@ export interface Iitem{
     measure: number;
     material: string;
     location: string;
-    quantity: number;
+    units: number;
 }
