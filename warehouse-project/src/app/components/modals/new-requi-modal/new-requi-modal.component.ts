@@ -74,7 +74,6 @@ export class NewRequiModalComponent {
       const measureCell = clickedRow.querySelector('.item-measure');
       const materialCell = clickedRow.querySelector('.item-material');
       const locationCell = clickedRow.querySelector('.item-location');
-      const quantityCell = clickedRow.querySelector('.item-quantity');
 
       if (codeCell){
         const codeValue = codeCell.textContent;

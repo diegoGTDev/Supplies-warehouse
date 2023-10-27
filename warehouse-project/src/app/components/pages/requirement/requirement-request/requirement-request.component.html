@@ -50,6 +50,15 @@
           <th mat-header-cell *matHeaderCellDef> Category </th>
           <td mat-cell *matCellDef="let element"> {{element.category}} </td>
         </ng-container>
+        <ng-container matColumnDef="unit">
+          <th mat-header-cell *matHeaderCellDef> Unit </th>
+          <td mat-cell *matCellDef="let element; let i = index" (click)="editCell(i)">
+            <div *ngIf="!isEditing[i]">{{ element.units }}</div>
+            <div *ngIf="isEditing[i]">
+              <input style="width: 16px;" [(ngModel)]="editedData[i].units" (blur)="saveCell(i)" (keydown.enter)="saveCell(i)" />
+            </div>
+          </td>
+        </ng-container>
         <ng-container matColumnDef="measure">
           <th mat-header-cell *matHeaderCellDef> Measure </th>
           <td mat-cell *matCellDef="let element">
@@ -59,14 +68,6 @@
             </p>
 
           </td>
-        </ng-container>
-        <ng-container matColumnDef="unit">
-          <th mat-header-cell *matHeaderCellDef> Unit </th>
-          <td mat-cell *matCellDef="let element"> {{element.units}} </td>
-        </ng-container>
-        <ng-container matColumnDef="quantity">
-          <th mat-header-cell *matHeaderCellDef> Quantity </th>
-          <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
         </ng-container>
         <ng-container matColumnDef="actions">
           <th mat-header-cell *matHeaderCellDef>Actions</th>
