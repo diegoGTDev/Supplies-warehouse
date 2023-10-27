@@ -22,8 +22,7 @@ export class NewRequiModalComponent {
   Item!: Iitem;
   requi_item_form = this._formBuilder.group({
     code: [''],
-    name: [''],
-    unit: ['', Validators.required],
+    name: ['']
   });
 
   constructor(
@@ -87,7 +86,7 @@ export class NewRequiModalComponent {
           measure: measureCell?.textContent!,
           material: materialCell?.textContent!,
           location: locationCell?.textContent!,
-          units: Number(this.requi_item_form.value?.unit),
+          units: 0
         };
         console.log(itemSelected);
         this.addNewItem(itemSelected);

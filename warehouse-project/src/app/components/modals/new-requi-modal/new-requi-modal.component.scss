@@ -1,3 +1,8 @@
 form mat-form-field{
   margin-left: 8px;
 }
+
+.table-container{
+  max-height: 400px;
+  overflow-y: auto;
+}

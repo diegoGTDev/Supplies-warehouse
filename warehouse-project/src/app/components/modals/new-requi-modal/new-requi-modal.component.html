@@ -10,35 +10,33 @@
         <mat-label>Name</mat-label>
         <input matInput formControlName="name" (ngModelChange)="searchItem()">
       </mat-form-field>
-      <mat-form-field>
-        <mat-label>Unit</mat-label>
-        <input matInput type="number" formControlName="unit">
-      </mat-form-field>
     </form>
-    <table style="width: 100%; text-align: right;">
-      <thead>
-        <tr>
-            <th>Code</th>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Category</th>
-            <th>Quantity</th>
-            <th>Measure</th>
-            <th>Material</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr style="cursor:pointer " *ngFor="let item of filteredSource; let i = index" (click) = "getItemSelected($event)">
-          <td class="item-code">{{item.code}}</td>
-          <td class="item-name">{{item.name}}</td>
-          <td class="item-description">{{item.description}}</td>
-          <td class="item-category">{{item.category}}</td>
-          <td class="item-quantity">{{item.quantity}}</td>
-          <td class="item-measure">{{item.measure}}</td>
-          <td class="item-material">{{item.material}}</td>
-        </tr>
-      </tbody>
-  </table>
+    <div class="table-container">
+      <table style="width: 100%;text-align: right;">
+        <thead>
+          <tr>
+              <th>Code</th>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Category</th>
+              <th>Quantity</th>
+              <th>Measure</th>
+              <th>Material</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="cursor:pointer " *ngFor="let item of filteredSource; let i = index" (click) = "getItemSelected($event)">
+            <td class="item-code">{{item.code}}</td>
+            <td class="item-name">{{item.name}}</td>
+            <td class="item-description">{{item.description}}</td>
+            <td class="item-category">{{item.category}}</td>
+            <td class="item-quantity">{{item.quantity}}</td>
+            <td class="item-measure">{{item.measure}}</td>
+            <td class="item-material">{{item.material}}</td>
+          </tr>
+        </tbody>
+    </table>
+    </div>
     <div mat-dialog-actions>
       <button mat-raised-button color="primary">Save</button>
       <button mat-raised-button color="warn" (click)="close()">Cancel</button>
