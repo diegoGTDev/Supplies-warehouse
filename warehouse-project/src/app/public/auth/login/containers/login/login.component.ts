@@ -38,13 +38,13 @@ export class LoginComponent implements OnInit {
 
   //   this._usuarioServicio.getIniciarSesion(correo, clave).subscribe({
   //     next: (data) => {
-       
+
   //       if (data.status) {
   //         this.router.navigate(['pages'])
   //       } else {
   //         this._snackBar.open("No se encontraron coincidencias", 'Oops!', { duration: 3000 });
   //       }
-        
+
   //     },
   //     error: (e) => {
   //       this._snackBar.open("hubo un error", 'Oops!', { duration:3000 });

@@ -1,9 +1,9 @@
 <div class="wrapper" >
     <h1 class="wrapper-title"><strong>New Requirement</strong></h1>
-    <form class="form" action="">
+    <form class="form" [formGroup]="_requiForm" action="">
         <mat-form-field class="full-width-input">
             <mat-label>Description</mat-label>
-            <input class="custom-input" matInput placeholder="Description" name="description">
+            <input class="custom-input" formControlName="description" matInput placeholder="Description" name="description">
         </mat-form-field>
         <mat-form-field>
           <mat-label>Department</mat-label>
@@ -18,6 +18,7 @@
     <div class="controls">
       <button mat-raised-button color="primary" (click)="openModal()">Add item</button>
       <button mat-raised-button color="primary" (click)="test()">Test</button>
+      <button type="submit" mat-raised-button color="accent" (click)="doneRequirement()">Done</button>
     </div>
     <!-- This block of code is about the table for all the items required by the client. -->
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">

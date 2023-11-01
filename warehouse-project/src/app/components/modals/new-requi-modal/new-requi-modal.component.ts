@@ -1,9 +1,9 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { Iitem } from '../../../core/models/Iitem';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ItemService } from 'src/app/services/item.service';
+import { Iitem } from 'src/app/core/models/Iitem';
 export interface PeriodicElement {
   name: string;
   position: number;
@@ -18,7 +18,9 @@ export interface PeriodicElement {
 })
 export class NewRequiModalComponent {
   dataSource: any = [];
-  filteredSource: any = [];
+  filteredSource: any = [
+    {code: '001', name: 'Item 1', description: 'Description 1', category: 'Category 1', measure: 'Measure 1', material: 'Material 1', location: 'Location 1', units: 0},
+  ];
   Item!: Iitem;
   requi_item_form = this._formBuilder.group({
     code: [''],
@@ -34,7 +36,6 @@ export class NewRequiModalComponent {
 
   //*Gets all the items from the backend
   ngOnInit(): void {
-    console.info('Getting all the items from the backend: ');
     this._itemService.getItems().subscribe((data: any) => {
       console.log(data);
       this.dataSource = data;

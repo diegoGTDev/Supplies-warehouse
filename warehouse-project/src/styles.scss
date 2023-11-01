@@ -14,7 +14,7 @@
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
 $warehouse-project-primary: mat.define-palette(mat.$indigo-palette);
-$warehouse-project-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$warehouse-project-accent: mat.define-palette(mat.$indigo-palette, A200);
 
 // The warn palette is optional (defaults to red).
 $warehouse-project-warn: mat.define-palette(mat.$red-palette);
@@ -39,4 +39,28 @@ $warehouse-project-theme: mat.define-light-theme((
 html, body { height: 100%; margin:0; overflow: hidden;}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; box-sizing: border-box;
 height: 100%;
+}
+
+.red-snackbar {
+  .mdc-snackbar__surface{
+    background: #F44336 !important;
+    color: white;
+  }
+}
+.red-snackbar button {
+  background-color: #F44336 !important;
+  color: white !important;
+  border: none;
+}
+
+.sucess-snackbar{
+  .mdc-snackbar__surface{
+    background: #4CAF50 !important;
+    color: white;
+  }
+}
+.sucess-snackbar button{
+  background-color: #4CAF50 !important;
+  color: white !important;
+  border: none;
 }
