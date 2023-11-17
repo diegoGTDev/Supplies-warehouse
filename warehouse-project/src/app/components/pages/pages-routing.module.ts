@@ -4,9 +4,11 @@ import { PagesComponent } from './pages.component';
 import { RequirementRequestComponent } from './requirement/requirement-request/requirement-request.component';
 import { RequirementAllComponent } from './requirement/requirement-all/requirement-all.component';
 import { InventoryComponent } from './inventory/inventory.component';
+import { AuthGuard } from 'src/app/security/auth.guard';
 
 const routes: Routes = [
   {
+    canMatch: [AuthGuard],
     path: '', component: PagesComponent, children: [
       { path: 'requirement/request', component: RequirementRequestComponent },
       { path: 'requirement/all', component: RequirementAllComponent},

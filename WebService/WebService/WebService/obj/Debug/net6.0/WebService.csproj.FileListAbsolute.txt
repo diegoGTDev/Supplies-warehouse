@@ -66,3 +66,5 @@ C:\Users\PC\Documents\Programacion\Portfolio\Bodega de Insumos\App_Bodega\WebSer
 C:\Users\PC\Documents\Programacion\Portfolio\Bodega de Insumos\App_Bodega\WebService\WebService\WebService\obj\Debug\net6.0\WebService.pdb
 C:\Users\PC\Documents\Programacion\Portfolio\Bodega de Insumos\App_Bodega\WebService\WebService\WebService\obj\Debug\net6.0\WebService.genruntimeconfig.cache
 C:\Users\PC\Documents\Programacion\Portfolio\Bodega de Insumos\App_Bodega\WebService\WebService\WebService\obj\Debug\net6.0\ref\WebService.dll
+C:\Users\PC\Documents\Programacion\Portfolio\Bodega de Insumos\App_Bodega\WebService\WebService\WebService\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\PC\Documents\Programacion\Portfolio\Bodega de Insumos\App_Bodega\WebService\WebService\WebService\bin\Debug\net6.0\Newtonsoft.Json.dll

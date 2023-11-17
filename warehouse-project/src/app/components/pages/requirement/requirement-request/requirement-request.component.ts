@@ -84,6 +84,9 @@ export class RequirementRequestComponent {
     }
     else{
       message = 'Requirement done';
+      this._requiForm.reset();
+      this.itemsRequested = [];
+      this.dataSource.data = this.itemsRequested;
     }
     this.requirement.description = this._requiForm.value.description
       ? this._requiForm.value.description

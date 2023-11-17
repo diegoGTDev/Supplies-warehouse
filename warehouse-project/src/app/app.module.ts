@@ -12,6 +12,8 @@ import { NewRequiModalComponent } from './components/modals/new-requi-modal/new-
 import { PublicModule } from './public/public.module';
 import { PublicRoutingModule } from './public/public-routing.module';
 import { ReusableModule } from './components/reusable/reusable.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor } from './security/jwt.interceptor';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,7 @@ import { ReusableModule } from './components/reusable/reusable.module';
     BrowserAnimationsModule,
     ReusableModule
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}  ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

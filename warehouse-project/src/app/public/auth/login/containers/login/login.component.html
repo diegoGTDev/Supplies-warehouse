@@ -11,7 +11,7 @@
           <div>
             <mat-form-field class="full-width" appearance="outline">
               <mat-label>Username</mat-label>
-              <input formControlName="email" matInput autocomplete="off" />
+              <input formControlName="username" matInput autocomplete="off" />
               <mat-icon matSuffix>mail</mat-icon>
             </mat-form-field>
             <mat-form-field class="full-width" appearance="outline">
@@ -21,7 +21,7 @@
                 <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
               </button>
             </mat-form-field>
-            <button class="btn-full-width" mat-raised-button color="primary" type="submit" [disabled]="formLogin.invalid">
+            <button class="btn-full-width" mat-raised-button color="primary" type="submit" (click)="Login()" [disabled]="formLogin.invalid">
               Ingresar
               <mat-icon matSuffix>login</mat-icon>
             </button>

@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 // import { UsuarioServicioService } from '../../services/usuario-servicio.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { iUserLogin } from 'src/app/core/models/iUserLogin';
 
 @Component({
   selector: 'app-login',
@@ -19,10 +21,10 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private _snackBar: MatSnackBar,
-    //private _usuarioServicio: UsuarioServicioService
+    private _authService: AuthService
   ) {
     this.formLogin = this.fb.group({
-      email: ['', Validators.required],
+      username: ['', Validators.required],
       password: ['', Validators.required]
     })
   }
@@ -30,30 +32,20 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // onLogin() {
-  //   this.loading = true;
+  Login(){
+    let userData = this.formLogin.value as iUserLogin;
+    console.log(userData);
 
-  //   const correo = this.formLogin.value.email;
-  //   const clave = this.formLogin.value.password;
-
-  //   this._usuarioServicio.getIniciarSesion(correo, clave).subscribe({
-  //     next: (data) => {
-
-  //       if (data.status) {
-  //         this.router.navigate(['pages'])
-  //       } else {
-  //         this._snackBar.open("No se encontraron coincidencias", 'Oops!', { duration: 3000 });
-  //       }
-
-  //     },
-  //     error: (e) => {
-  //       this._snackBar.open("hubo un error", 'Oops!', { duration:3000 });
-  //     },
-  //     complete: () => {
-  //       this.loading = false;
-  //     }
-  //   })
-
-  // }
+      this._authService.login(userData).subscribe(response =>{
+        console.info(response);
+        if (response.status){
+          this.router.navigate(['/pages']);
+        }
+        else{
+          alert("Error");
+        }
+      })
+      this.formLogin.reset();
+  }
 
 }

@@ -4,6 +4,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ItemService } from 'src/app/services/item.service';
 import { Iitem } from 'src/app/core/models/Iitem';
+import { catchError } from 'rxjs';
 export interface PeriodicElement {
   name: string;
   position: number;
@@ -36,11 +37,18 @@ export class NewRequiModalComponent {
 
   //*Gets all the items from the backend
   ngOnInit(): void {
+
     this._itemService.getItems().subscribe((data: any) => {
       console.log(data);
+      catchError((err) => {
+        console.log(err);
+        return err;
+      }
+      );
       this.dataSource = data;
       this.filteredSource = data;
     });
+
   }
 
   //*Searches for a item

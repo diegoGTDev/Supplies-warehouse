@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebService.Data;
@@ -9,6 +10,7 @@ namespace WebService.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ItemController : ControllerBase
     {
         private readonly iItemService _itemService;

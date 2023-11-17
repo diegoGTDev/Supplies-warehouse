@@ -57,7 +57,7 @@
       </button>
       <span class="example-spacer"></span>
       <span class="username">Username</span>
-      <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon"
+      <button mat-icon-button class="example-icon favorite-icon" (click)="logout()" aria-label="Example icon-button with heart icon"
                routerLink="/login">
         <mat-icon>logout</mat-icon>
       </button>
