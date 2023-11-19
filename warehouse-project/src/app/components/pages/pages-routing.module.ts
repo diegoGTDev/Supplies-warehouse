@@ -5,13 +5,16 @@ import { RequirementRequestComponent } from './requirement/requirement-request/r
 import { RequirementAllComponent } from './requirement/requirement-all/requirement-all.component';
 import { InventoryComponent } from './inventory/inventory.component';
 import { AuthGuard } from 'src/app/security/auth.guard';
-
+import { Role } from 'src/app/core/models/Role';
+import { hasRoleGuard } from 'src/app/security/hasRole.guard';
 const routes: Routes = [
   {
     canMatch: [AuthGuard],
     path: '', component: PagesComponent, children: [
-      { path: 'requirement/request', component: RequirementRequestComponent },
-      { path: 'requirement/all', component: RequirementAllComponent},
+      { path: 'requirement/request', component: RequirementRequestComponent},
+      { path: 'requirement/all', component: RequirementAllComponent, data: {allowedRoles: [Role.Administrator, Role.Dispatcher, Role.Inventory_Manager,Role.Manager, Role.Warehouse_Supervisorm]},
+    canMatch: [hasRoleGuard]
+    },
       { path: 'inventory/view', component: InventoryComponent}
     ]
   }

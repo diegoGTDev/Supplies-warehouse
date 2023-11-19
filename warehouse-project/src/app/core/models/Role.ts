@@ -3,5 +3,6 @@ export enum Role{
   Dispatcher,
   Inventory_Manager,
   Manager,
-  Warehouse_Supervisor
+  Warehouse_Supervisorm,
+  Supervisor
 }

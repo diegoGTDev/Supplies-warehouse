@@ -78,7 +78,7 @@ export class RequirementRequestComponent {
       message = 'You must add at least one item to the requirement';
       warning = true;
     }
-    else if (this._requiForm.value.description == ''){
+    else if (this._requiForm.value.description == '' || this._requiForm.value.description == null){
       message = 'You must add a description to the requirement';
       warning = true;
     }
