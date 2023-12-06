@@ -25,20 +25,33 @@ namespace WebService.Services
         }
         public UserResponse Auth(AuthRequest authRequest)
         {
+            Console.WriteLine("Request is: ", authRequest.Username);
             UserResponse userresponse = new UserResponse();
             using (var db = new db_warehouseContext())
             {
                 string spassword = Encrypt.GetSHA256(authRequest.Password);
-                var usuario = db.Accounts.Where(d => d.Name == authRequest.Username && d.Password == spassword).FirstOrDefault();
+                // var usuario = db.Accounts.Where(d => d.Name == authRequest.Username && d.Password == spassword).FirstOrDefault();
+                
+                var usuario = db.Accounts.Where(
+                    d => d.Name == authRequest.Username && d.Password == spassword).SelectMany(
+
+                    u => db.Roles.Where(
+                          r => u.Role == r.RoleId)
+                        .Select(t3 => new User
+                        {
+                            Name = u.Name,
+                            Role = t3.Name,
+                        })).FirstOrDefault();
 
                 if (usuario == null) { return null; }
                 userresponse.UserName = usuario.Name;
+                Console.WriteLine("Usuario ROL: " + usuario.Role);
                 userresponse.Role = usuario.Role;
                 userresponse.Token = this.GetToken(usuario);
             }
             return userresponse;
         }
-        private string GetToken(Account account)
+        private string GetToken(iUser account)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var uKey = Encoding.ASCII.GetBytes(this._configuration.SecretKey);
@@ -49,8 +62,8 @@ namespace WebService.Services
                 Subject = new ClaimsIdentity(
                     new Claim[]
                     {
-                        new Claim(ClaimTypes.NameIdentifier, account.AccId.ToString()),
-                        new Claim(ClaimTypes.NameIdentifier, account.Name)
+                        new Claim(ClaimTypes.NameIdentifier, account.Name),
+                        new Claim(ClaimTypes.Role, account.Role.ToString())
                     }
                     ),
                 Expires = DateTime.UtcNow.AddDays(5),

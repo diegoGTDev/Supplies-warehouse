@@ -20,13 +20,16 @@ export class AuthService {
       JSON.parse(localStorage.getItem('user')!)
     );
     this.user = this.userSubject.asObservable();
+
   }
 
   login(login : iUserLogin): Observable<Response>{
     return this._http.post<Response>(this.url, login).pipe(
       map(res =>{
         if (res.status === 1){
+          console.info("login: ", login);
           const user : iUser = res.data as iUser;
+          console.log("User: ", res.data);
           localStorage.setItem('user', JSON.stringify(user));
           this.userSubject.next(user);
           this.currentUserLoginOn.next(true);
@@ -45,7 +48,18 @@ export class AuthService {
   get userData(): Observable<iUser>{
     return this.user;
   }
+
+  get test(){
+    if (localStorage.getItem('user') != null){
+      return JSON.parse(localStorage.getItem('user')!);
+    }
+    return this.userSubject.value;
+  }
   get userLoginOn(): Observable<Boolean>{
+    console.log("userLoginOn: ", this.currentUserLoginOn.asObservable());
+    if (localStorage.getItem('user') != null){
+      this.currentUserLoginOn.next(true);
+    }
     return this.currentUserLoginOn.asObservable();
   }
 }

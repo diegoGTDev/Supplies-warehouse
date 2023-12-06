@@ -1,7 +1,7 @@
 import { Role } from './Role';
 import { Department } from './Department';
 export interface iUser{
-    name: string;
+    userName: string;
     role: Role;
     department: Department;
     token: string;

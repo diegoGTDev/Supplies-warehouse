@@ -11,8 +11,18 @@ export class AuthGuard implements CanMatch{
 
   }
   canMatch(route: Route, segments: UrlSegment[]): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-    return this._authService.currentUserLoginOn.asObservable().pipe(
-      map((isLoggedIn => isLoggedIn || this._router.createUrlTree(['/login'])))
-    ) as Observable<boolean | UrlTree>;
+    var test;
+    this._authService.userLoginOn.subscribe(data => {
+      console.log("In guard", data);
+      test = data;
+    });
+
+    if(test){
+      return true;
+    }
+    else{
+      this._router.navigate(['/login']);
+      return false;
+    }
   }
 }

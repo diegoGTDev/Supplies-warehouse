@@ -10,7 +10,7 @@ namespace WebService.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    [Authorize(Roles = "Administrator, Manager, Supervisor, Warehouse Supervisor, Inventory Manager, Dispatcher")]
     public class ItemController : ControllerBase
     {
         private readonly iItemService _itemService;

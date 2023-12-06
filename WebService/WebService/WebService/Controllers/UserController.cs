@@ -18,6 +18,7 @@ namespace WebService.Controllers
         public IActionResult Login([FromBody] AuthRequest authRequest)
         {
             var Response = new Response();
+            Console.WriteLine("Request is: ", authRequest.Username);
             Response.Data = _userService.Auth(authRequest);
             if (Response.Data != null)
             {

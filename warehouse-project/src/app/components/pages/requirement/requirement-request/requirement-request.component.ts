@@ -7,6 +7,7 @@ import { Status } from 'src/app/core/models/Status';
 import { MatTableDataSource } from '@angular/material/table';
 import { FormBuilder } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-requirement-request',
@@ -36,15 +37,18 @@ export class RequirementRequestComponent {
   _requiForm = this._formBuilder.group({
     description: [''],
   });
-
-  constructor(public dialog: MatDialog, private _formBuilder: FormBuilder, private _snackBar :MatSnackBar) {
+  username : string = "";
+  constructor(public dialog: MatDialog, private _formBuilder: FormBuilder, private _snackBar :MatSnackBar, private _auth : AuthService) {
     this.dataSource.data = this.itemsRequested;
     this.isEditing = Array(this.dataSource.data.length).fill(false);
     this.editedData = this.dataSource.data.map((item) => ({
       units: item.units,
     }));
+    this._auth.userData.subscribe(user => {
+      this.username = user.userName;
+    })
     this.requirement = {
-      user: 'User',
+      user: this.username,
       description: 'Description',
       status: Status.Open,
       concepts: this.itemsRequested,
@@ -84,13 +88,15 @@ export class RequirementRequestComponent {
     }
     else{
       message = 'Requirement done';
+      this.requirement.description = this._requiForm.value.description
+      ? this._requiForm.value.description
+      : this.requirement.description;
       this._requiForm.reset();
       this.itemsRequested = [];
       this.dataSource.data = this.itemsRequested;
+      console.log("The requirement is: ", this.requirement);
     }
-    this.requirement.description = this._requiForm.value.description
-      ? this._requiForm.value.description
-      : this.requirement.description;
+
     this._snackBar.open(message, 'Close', {
         duration: 1500,
         horizontalPosition: 'center',

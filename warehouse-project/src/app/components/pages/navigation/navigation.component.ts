@@ -11,13 +11,18 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 })
 export class NavigationComponent {
 
+  userName : string = "user";
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver, private _authService : AuthService) {}
+  constructor(private breakpointObserver: BreakpointObserver, private _authService : AuthService) {
+    this._authService.userData.subscribe(user => {
+      this.userName = user.userName;
+    })
+  }
 
 
   logout(){
