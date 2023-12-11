@@ -27,9 +27,16 @@ export class LoginComponent implements OnInit {
       username: ['', Validators.required],
       password: ['', Validators.required]
     })
+    this._authService.user.subscribe((e) =>{
+      if (e){
+        this.router.navigate(['/pages'])
+      }
+    })
   }
 
   ngOnInit(): void {
+    console.warn("Im in to init login");
+
   }
 
   Login(){

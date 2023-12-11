@@ -95,7 +95,7 @@ export class NewRequiModalComponent {
           measure: measureCell?.textContent!,
           material: materialCell?.textContent!,
           location: locationCell?.textContent!,
-          units: 0
+          units: 1
         };
         console.log(itemSelected);
         this.addNewItem(itemSelected);

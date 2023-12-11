@@ -7,12 +7,15 @@ import { InventoryComponent } from './inventory/inventory.component';
 import { AuthGuard } from 'src/app/security/auth.guard';
 import { Role } from 'src/app/core/models/Role';
 import { hasRoleGuard } from 'src/app/security/hasRole.guard';
+const role = new Role();
+const allowedRoles =
+  [role.ADMINISTRATOR, role.DISPATCHER, role.INVENTORY_MANAGER,role.MANAGER, role.WAREHOUSE_SUPERVISOR, role.SUPERVISOR];
 const routes: Routes = [
   {
     canMatch: [AuthGuard],
     path: '', component: PagesComponent, children: [
       { path: 'requirement/request', component: RequirementRequestComponent},
-      { path: 'requirement/all', component: RequirementAllComponent, data: {allowedRoles: [Role.Administrator, Role.Dispatcher, Role.Inventory_Manager,Role.Manager, Role.Warehouse_Supervisorm]},
+      { path: 'requirement/all', component: RequirementAllComponent, data: {allowedRoles},
     canMatch: [hasRoleGuard]
     },
       { path: 'inventory/view', component: InventoryComponent}

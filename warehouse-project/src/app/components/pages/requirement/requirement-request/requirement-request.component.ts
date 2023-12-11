@@ -8,6 +8,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { FormBuilder } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { RequirementService } from 'src/app/services/requirement/requirement.service';
 
 @Component({
   selector: 'app-requirement-request',
@@ -38,7 +39,7 @@ export class RequirementRequestComponent {
     description: [''],
   });
   username : string = "";
-  constructor(public dialog: MatDialog, private _formBuilder: FormBuilder, private _snackBar :MatSnackBar, private _auth : AuthService) {
+  constructor(public dialog: MatDialog, private _formBuilder: FormBuilder, private _snackBar :MatSnackBar, private _auth : AuthService, private _requiService : RequirementService) {
     this.dataSource.data = this.itemsRequested;
     this.isEditing = Array(this.dataSource.data.length).fill(false);
     this.editedData = this.dataSource.data.map((item) => ({
@@ -51,7 +52,7 @@ export class RequirementRequestComponent {
       user: this.username,
       description: 'Description',
       status: Status.Open,
-      concepts: this.itemsRequested,
+      concepts: this.itemsRequested.map((item) => ({ "supply_code": item.code, "units": item.units })),
     };
   }
   openModal() {
@@ -67,27 +68,38 @@ export class RequirementRequestComponent {
       this.dataSource.data = this.itemsRequested;
     });
   }
+
+  //! Delete this function when the project is finished
   test() {
     console.log(this.itemsRequested);
     this.dataSource.data = this.itemsRequested;
+    this.requirement.concepts = this.itemsRequested.map((item) => ({ "supply_code": item.code, "units": item.units }));
     this.requirement.description = this._requiForm.value.description
       ? this._requiForm.value.description
       : this.requirement.description;
     console.info('The requirement is: ', this.requirement);
   }
+  // Sends the requirement to the service, but first checks if the form is correctly filled
   doneRequirement() {
     let message : string;
     let warning : Boolean = false;
+
+    // Checks if there is at least one item requested
     if (this.itemsRequested.length < 1){
       message = 'You must add at least one item to the requirement';
       warning = true;
     }
+
+    // Checks if there is a description
     else if (this._requiForm.value.description == '' || this._requiForm.value.description == null){
       message = 'You must add a description to the requirement';
       warning = true;
     }
+
+    // If everything is ok, sends the requirement to the service
     else{
       message = 'Requirement done';
+      this.requirement.concepts = this.itemsRequested.map((item) => ({ "supply_code": item.code, "units": item.units }));
       this.requirement.description = this._requiForm.value.description
       ? this._requiForm.value.description
       : this.requirement.description;
@@ -95,6 +107,7 @@ export class RequirementRequestComponent {
       this.itemsRequested = [];
       this.dataSource.data = this.itemsRequested;
       console.log("The requirement is: ", this.requirement);
+      this._requiService.sendRequirement(this.requirement);
     }
 
     this._snackBar.open(message, 'Close', {

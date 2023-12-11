@@ -37,15 +37,20 @@ namespace WebService.Services
 
                     u => db.Roles.Where(
                           r => u.Role == r.RoleId)
-                        .Select(t3 => new User
-                        {
-                            Name = u.Name,
-                            Role = t3.Name,
-                        })).FirstOrDefault();
+                          .SelectMany(
+                            d => db.Departments.Where(
+                                d => u.Department == d.DepartmentId)
+                                .Select(t1 => new User
+                                {
+                                    Name = u.Name,
+                                    Role = d.Name,
+                                    Department = t1.Name
+                                }))).FirstOrDefault();
 
                 if (usuario == null) { return null; }
                 userresponse.UserName = usuario.Name;
                 Console.WriteLine("Usuario ROL: " + usuario.Role);
+                Console.WriteLine("Usuario DEP: " + usuario.Department);
                 userresponse.Role = usuario.Role;
                 userresponse.Token = this.GetToken(usuario);
             }
@@ -63,10 +68,11 @@ namespace WebService.Services
                     new Claim[]
                     {
                         new Claim(ClaimTypes.NameIdentifier, account.Name),
-                        new Claim(ClaimTypes.Role, account.Role.ToString())
+                        new Claim(ClaimTypes.Role, account.Role.ToString()),
+                        new Claim("Department", account.Department.ToString())
                     }
                     ),
-                Expires = DateTime.UtcNow.AddDays(5),
+                Expires = DateTime.UtcNow.AddDays(1),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(uKey), SecurityAlgorithms.HmacSha256Signature)
             };
             var token = tokenHandler.CreateToken(tokenDescriptor);

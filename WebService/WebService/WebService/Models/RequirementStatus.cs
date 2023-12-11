@@ -15,4 +15,13 @@ namespace WebService.Models
 
         public virtual ICollection<Requirement> Requirements { get; set; }
     }
+
+    public enum RequirementStatusEnum
+    {
+        Open = 0,
+        
+        Close = 1,
+        
+        Cancelled = 2
+    }
 }

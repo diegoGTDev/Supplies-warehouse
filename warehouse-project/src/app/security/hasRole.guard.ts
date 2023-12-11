@@ -5,6 +5,8 @@ import { map } from 'rxjs';
 export const hasRoleGuard: CanMatchFn = (route, segments) => {
   const allowedRoles = route.data?.['allowedRoles'];
   var authService = inject(AuthService)
+  console.log(allowedRoles.includes("administrator".toUpperCase()));
   return authService.userData.pipe(
-    map((user) => user && allowedRoles.includes(user.role)));
+    map((user) => user && allowedRoles.includes(user.role.toString().toUpperCase())),
+    );
 };

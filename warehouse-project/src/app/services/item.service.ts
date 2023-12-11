@@ -16,7 +16,7 @@ export class ItemService {
     var response = new Observable;
     try{
 
-      response = this.http.get(`${this.route}/api/item`);
+      response = this.http.get(`${this.route}/item`);
     }catch(error){
       console.info("The error was: ", error);
     }

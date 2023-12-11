@@ -17,6 +17,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<iItemService, ItemService>();
 builder.Services.AddScoped<iUserService, UserService>();
+builder.Services.AddScoped<iRequirementService, RequirementService>();
 var appSettingsSection = builder.Configuration.GetSection("AppSettings");
 builder.Services.Configure<AppConfiguration>(appSettingsSection);
 var appSettings = appSettingsSection.Get<AppConfiguration>();
