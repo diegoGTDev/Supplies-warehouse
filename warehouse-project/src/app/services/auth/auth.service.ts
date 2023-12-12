@@ -4,12 +4,12 @@ import { BehaviorSubject, Observable, map } from 'rxjs';
 import { iUser } from 'src/app/core/models/iUser';
 import { Response } from 'src/app/core/models/Response';
 import { iUserLogin } from 'src/app/core/models/iUserLogin';
-
+import { environment } from '../environment';
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  url: string = 'https://localhost:7155/api/user/login';
+  url: string = environment.apiUrl + '/user';
   rediectUrl: string | null = null;
 
   public userSubject!: BehaviorSubject<iUser>;
@@ -24,7 +24,7 @@ export class AuthService {
   }
 
   login(login : iUserLogin): Observable<Response>{
-    return this._http.post<Response>(this.url, login).pipe(
+    return this._http.post<Response>(`${this.url}/login`, login).pipe(
       map(res =>{
         if (res.status === 1){
           console.info("login: ", login);
@@ -45,6 +45,22 @@ export class AuthService {
     this.currentUserLoginOn.next(false);
   }
 
+  verifySession() : Observable<Boolean> {
+    return this._http.get<Response>(`${this.url}/verifySession`).pipe(
+      map(res =>{
+        if (res.data){
+          console.log("verifySession: ", res.data);
+          return true;
+        }
+        else{
+          console.log("verifySession: ", res.data);
+          return false;
+        }
+      })
+    )
+
+  }
+
   get userData(): Observable<iUser>{
     return this.user;
   }
@@ -57,8 +73,11 @@ export class AuthService {
   }
   get userLoginOn(): Observable<Boolean>{
     console.log("userLoginOn: ", this.currentUserLoginOn.asObservable());
-    if (localStorage.getItem('user') != null){
+    if (this.verifySession()){
       this.currentUserLoginOn.next(true);
+    }
+    else{
+      this.currentUserLoginOn.next(false);
     }
     return this.currentUserLoginOn.asObservable();
   }

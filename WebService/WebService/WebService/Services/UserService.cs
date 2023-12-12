@@ -56,6 +56,32 @@ namespace WebService.Services
             }
             return userresponse;
         }
+
+        //Create a function to verify the token
+        public bool VerifyToken(string token)
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var uKey = Encoding.ASCII.GetBytes(this._configuration.SecretKey);
+            try
+            {
+                tokenHandler.ValidateToken(token, new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(uKey),
+                    ValidateIssuer = true,
+                    ValidIssuer = this._configuration.Issuer,
+                    ValidateAudience = true,
+                    ValidAudience = this._configuration.Audience,
+                    ValidateLifetime = true,
+                    ClockSkew = TimeSpan.Zero
+                }, out SecurityToken validatedToken);
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
         private string GetToken(iUser account)
         {
             var tokenHandler = new JwtSecurityTokenHandler();

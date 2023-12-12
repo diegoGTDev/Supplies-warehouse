@@ -32,5 +32,26 @@ namespace WebService.Controllers
             }
             return Ok(Response);
         }
+
+        [HttpGet]
+        [Route("verifySession")]
+        public IActionResult VerifySession([FromBody] string token)
+        {
+            var Response = new Response();
+            if (_userService.VerifyToken(token))
+            {
+                Response.Message = "Session Valid";
+                Response.Status = State.Success;
+                Response.Data = true;
+            }
+            else
+            {
+                Response.Message = "Session Invalid";
+                Response.Status = State.Error;
+                Response.Data = false;
+            }
+            return Ok(Response);
+
+        }
     }
 }

@@ -6,5 +6,6 @@ namespace WebService.Services
     public interface iUserService
     {
         UserResponse Auth(AuthRequest authRequest);
+        bool VerifyToken(string token);
     }
 }
