@@ -16,23 +16,8 @@ export class JwtInterceptor implements HttpInterceptor {
     private _authService : AuthService) {}
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    // var user : any;
     var user = this._authService.test;
-    // if (user){
-    //   request = request.clone({
-    //     setHeaders:{
-    //       Authorization: `Bearer ${user.token}`
-    //     }
-    //   })
-    //   return next.handle(request);
-    // }
-    // this._authService.userData.subscribe(
-    //   {
-    //     next: (data) => {
-    //       user = data;
-    //     }
-    //   }
-    // );
+
 
     if (user){
       //Clonar la request

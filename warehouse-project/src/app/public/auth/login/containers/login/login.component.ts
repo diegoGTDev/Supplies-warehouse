@@ -35,8 +35,15 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.warn("Im in to init login");
-
+    this._authService.verifySession().subscribe(response =>{
+      console.info("Mi responsita", response);
+      if (response.data){
+        this.router.navigate(['/pages']);
+      }
+      else{
+        //alert("Error");
+      }
+    });
   }
 
   Login(){

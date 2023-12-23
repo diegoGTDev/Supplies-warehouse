@@ -12,11 +12,16 @@ export class AuthGuard implements CanMatch{
   }
   canMatch(route: Route, segments: UrlSegment[]): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
     var test;
-    this._authService.userLoginOn.subscribe(data => {
-      console.log("In guard", data);
-      test = data;
-    });
+    this._authService.userLoginOn.pipe(
+      map(res =>{
+        console.log("Res in guard was: ", res);
+        test = res;
+      })
+    ).subscribe(test);
 
+
+
+    console.log("Test in guard was: ", test);
     if(test){
       return true;
     }

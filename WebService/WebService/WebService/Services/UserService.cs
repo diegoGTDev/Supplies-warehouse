@@ -11,6 +11,7 @@ using System.Security.Claims;
 using WebService.Models;
 using WebService.Models.Common;
 using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebService.Services
 {
@@ -58,8 +59,10 @@ namespace WebService.Services
         }
 
         //Create a function to verify the token
+        [Authorize]
         public bool VerifyToken(string token)
         {
+            Console.WriteLine("Verifying Token in process");
             var tokenHandler = new JwtSecurityTokenHandler();
             var uKey = Encoding.ASCII.GetBytes(this._configuration.SecretKey);
             try

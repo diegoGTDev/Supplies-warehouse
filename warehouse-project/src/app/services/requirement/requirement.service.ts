@@ -3,6 +3,7 @@ import { environment } from '../environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IRequirement } from 'src/app/core/models/Irequirement';
+import { Response } from 'src/app/core/models/Response';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,15 @@ export class RequirementService {
    }
 
    getAllRequirements(){
-      return this._http.get<Response>(this.url);
+      // return this._http.get<Response>(this.url).subscribe(
+      //   (data : Response) => {
+      //     return data;
+      //   }
+      // );
+      var data;
+      var response = this._http.get<Response>(this.url)
+      console.log("Response was:", response);
+      return response;
    }
 
 }

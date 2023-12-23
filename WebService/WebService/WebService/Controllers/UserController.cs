@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using WebService.Models.Common;
 using WebService.Models.Response;
 using WebService.Requests;
 using WebService.Services;
@@ -33,12 +34,13 @@ namespace WebService.Controllers
             return Ok(Response);
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("verifySession")]
-        public IActionResult VerifySession([FromBody] string token)
+        public IActionResult VerifySession([FromBody] UserResponse request)
         {
+            Console.WriteLine("Verifying Token in process with token: " + request.Token);
             var Response = new Response();
-            if (_userService.VerifyToken(token))
+            if (_userService.VerifyToken(request.Token))
             {
                 Response.Message = "Session Valid";
                 Response.Status = State.Success;
