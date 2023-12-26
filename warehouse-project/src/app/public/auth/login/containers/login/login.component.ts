@@ -53,12 +53,20 @@ export class LoginComponent implements OnInit {
       this._authService.login(userData).subscribe(response =>{
         console.info(response);
         if (response.status){
+          this._snackBar.open(response.message, "Ok", {
+            duration: 2000,
+            panelClass: ['sucess-snackbar']
+          });
           this.router.navigate(['/pages']);
         }
-        else{
-          alert("Error");
-        }
-      })
+      },
+      error =>{
+        this._snackBar.open("Login failed", "Ok", {
+          duration: 2000,
+          panelClass: ['red-snackbar']
+        });
+      }
+      )
       this.formLogin.reset();
   }
 
