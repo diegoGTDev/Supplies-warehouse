@@ -9,6 +9,8 @@ import { FormBuilder } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { RequirementService } from 'src/app/services/requirement/requirement.service';
+import { iUser } from 'src/app/core/models/iUser';
+import { Role } from 'src/app/core/models/Role';
 
 @Component({
   selector: 'app-requirement-request',
@@ -38,7 +40,11 @@ export class RequirementRequestComponent {
   _requiForm = this._formBuilder.group({
     description: [''],
   });
-  username : string = "";
+  userInfo = {
+    userName: '',
+    role: new Role(),
+    department: '',
+  };
   constructor(public dialog: MatDialog, private _formBuilder: FormBuilder, private _snackBar :MatSnackBar, private _auth : AuthService, private _requiService : RequirementService) {
     this.dataSource.data = this.itemsRequested;
     this.isEditing = Array(this.dataSource.data.length).fill(false);
@@ -46,10 +52,13 @@ export class RequirementRequestComponent {
       units: item.units,
     }));
     this._auth.userData.subscribe(user => {
-      this.username = user.userName;
+      this.userInfo.department = user.department;
+      this.userInfo.role = user.role;
+      this.userInfo.userName = user.userName;
+
     })
     this.requirement = {
-      user: this.username,
+      user: this.userInfo?.userName,
       description: 'Description',
       status: Status.Open,
       concepts: this.itemsRequested.map((item) => ({ "supply_code": item.code, "units": item.units })),

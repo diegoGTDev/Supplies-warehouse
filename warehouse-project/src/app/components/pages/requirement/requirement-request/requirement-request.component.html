@@ -7,13 +7,8 @@
         </mat-form-field>
         <mat-form-field>
           <mat-label>Department</mat-label>
-          <mat-select>
-            <mat-option value="one">Maintenance</mat-option>
-            <mat-option value="two">Production</mat-option>
-            <mat-option value="two">Quality</mat-option>
-            <mat-option value="two">Administration</mat-option>
-          </mat-select>
-        </mat-form-field>
+          <input class="custom-input" matInput [disabled]="true" value={{userInfo.department}}>
+          </mat-form-field>
     </form>
     <div class="controls">
       <button mat-raised-button color="primary" (click)="openModal()">Add item</button>

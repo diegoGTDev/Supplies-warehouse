@@ -3,6 +3,6 @@ import { Department } from './Department';
 export interface iUser{
     userName: string;
     role: Role;
-    department: Department;
+    department: string;
     token: string;
 }

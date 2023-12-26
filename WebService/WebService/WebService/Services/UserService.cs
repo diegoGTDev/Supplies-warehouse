@@ -54,6 +54,7 @@ namespace WebService.Services
                 Console.WriteLine("Usuario DEP: " + usuario.Department);
                 userresponse.Role = usuario.Role;
                 userresponse.Token = this.GetToken(usuario);
+                userresponse.Department = usuario.Department;
             }
             return userresponse;
         }
