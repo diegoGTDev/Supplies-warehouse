@@ -8,5 +8,6 @@ namespace WebService.Services{
         void DeleteRequirement(int id);
         Requirement GetRequirement(int id);
         IEnumerable<Requirement> GetAllRequirements();
-        }
+        IEnumerable<Requirement> GetAllRequirementsById(short id);
+    }
 }

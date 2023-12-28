@@ -28,7 +28,7 @@ export class RequirementService {
       //   }
       // );
       var data;
-      var response = this._http.get<Response>(this.url)
+      var response = this._http.get<Response>(`${this.url + '/GetAllById'}`)
       console.log("Response was:", response);
       return response;
    }

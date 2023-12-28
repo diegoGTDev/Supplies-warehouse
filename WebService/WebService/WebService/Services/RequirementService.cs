@@ -72,6 +72,13 @@ namespace WebService.Services
             
         }
 
+        public IEnumerable<Requirement> GetAllRequirementsById(short id){
+            using (var db = new db_warehouseContext()){
+                var requirement = db.Requirements.Where(d => d.Account == id).ToList();
+                return requirement;
+            }
+        }
+
         public Requirement GetRequirement(int id)
         {
             throw new NotImplementedException();

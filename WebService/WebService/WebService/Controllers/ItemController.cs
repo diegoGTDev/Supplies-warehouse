@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -20,7 +21,7 @@ namespace WebService.Controllers
         }
 
         [HttpGet]
-        
+        [Authorize(Roles = "Administrator, Manager, Supervisor, Warehouse Supervisor, Inventory Manager, Dispatcher")]
         public IActionResult Get()
         {
             return Ok(_itemService.Get());

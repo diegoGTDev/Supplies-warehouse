@@ -43,6 +43,7 @@ namespace WebService.Services
                                 d => u.Department == d.DepartmentId)
                                 .Select(t1 => new User
                                 {
+                                    Id = u.AccId,
                                     Name = u.Name,
                                     Role = d.Name,
                                     Department = t1.Name
@@ -55,6 +56,7 @@ namespace WebService.Services
                 userresponse.Role = usuario.Role;
                 userresponse.Token = this.GetToken(usuario);
                 userresponse.Department = usuario.Department;
+        
             }
             return userresponse;
         }
@@ -97,7 +99,8 @@ namespace WebService.Services
                 Subject = new ClaimsIdentity(
                     new Claim[]
                     {
-                        new Claim(ClaimTypes.NameIdentifier, account.Name),
+                        new Claim(ClaimTypes.NameIdentifier, account.Id.ToString()),
+                        new Claim(ClaimTypes.Name, account.Name.ToString()),
                         new Claim(ClaimTypes.Role, account.Role.ToString()),
                         new Claim("Department", account.Department.ToString())
                     }
