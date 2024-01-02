@@ -24,6 +24,14 @@
                   <mat-icon>edit</mat-icon><span>View</span>
                 </div>
               </a>
+              <div *ngIf="verifyDepartment()">
+                <a mat-list-item routerLink="./requirement/all">
+                  <div class="item">
+                    <mat-icon>dataset</mat-icon><span>View All</span>
+                  </div>
+                </a>
+              </div>
+
           </mat-nav-list>
       </mat-expansion-panel>
       </mat-nav-list>

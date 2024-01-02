@@ -42,7 +42,7 @@ export class RequirementRequestComponent {
   });
   userInfo = {
     userName: '',
-    role: new Role(),
+    role: "",
     department: '',
   };
   constructor(public dialog: MatDialog, private _formBuilder: FormBuilder, private _snackBar :MatSnackBar, private _auth : AuthService, private _requiService : RequirementService) {
