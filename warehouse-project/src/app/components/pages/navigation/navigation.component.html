@@ -64,7 +64,11 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span class="example-spacer"></span>
-      <span class="username">{{userName}}</span>
+      <button mat-icon-button class="icon"><mat-icon class="material-symbols-outlined">
+        notifications
+        </mat-icon></button>
+      <button mat-icon-button class="icon"><mat-icon class="mat-18">account_circle</mat-icon></button>
+      <!-- <span class="username">{{userName}}</span> -->
       <button mat-icon-button class="example-icon favorite-icon" (click)="logout()" aria-label="Example icon-button with heart icon"
                routerLink="/login">
         <mat-icon>logout</mat-icon>

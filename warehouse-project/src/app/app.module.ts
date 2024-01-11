@@ -14,6 +14,7 @@ import { PublicRoutingModule } from './public/public-routing.module';
 import { ReusableModule } from './components/reusable/reusable.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './security/jwt.interceptor';
+import { AdminRoutingModule } from './admin/admin-routing.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { JwtInterceptor } from './security/jwt.interceptor';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    ReusableModule
+    ReusableModule,
+    AdminRoutingModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}  ],
   bootstrap: [AppComponent],
