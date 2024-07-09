@@ -39,6 +39,7 @@ builder.Services.AddCors(options =>
     {
         builder.AllowAnyOrigin()
                .AllowAnyMethod()
+               .AllowAnyHeader()
                .AllowAnyHeader();
     });
 });
@@ -57,7 +58,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         ValidateIssuerSigningKey = true,
         ValidIssuer = appSettings.Issuer,
         ValidAudience = appSettings.Audience,
-        IssuerSigningKey = new SymmetricSecurityKey(uKey)
+        IssuerSigningKey = new SymmetricSecurityKey(uKey),
     };
 });
 var app = builder.Build();

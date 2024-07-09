@@ -3,12 +3,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
     selector: 'app-admin',
-    standalone: true,
-    imports: [
-        CommonModule,
-    ],
-    template: `<p>admin works!</p>`,
+    templateUrl: './admin.component.html',
     styleUrls: ['./admin.component.css'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AdminComponent { }

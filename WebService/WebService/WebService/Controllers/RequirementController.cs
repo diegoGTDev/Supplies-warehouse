@@ -1,4 +1,5 @@
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebService.Models.Response;
 using WebService.Requests;
@@ -8,6 +9,7 @@ namespace WebService.Controllers{
 
     [ApiController]
     [Route("api/[controller]")]
+    
     public class RequirementController : ControllerBase
     {
         private readonly iRequirementService _requirementService;

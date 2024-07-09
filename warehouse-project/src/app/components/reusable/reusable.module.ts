@@ -34,13 +34,16 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 
-
+//Matbadge
+import { MatBadgeModule } from '@angular/material/badge';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
   declarations: [],
   imports: [
     HttpClientModule,
+    RouterModule,
     ReactiveFormsModule,
     FormsModule,
     CommonModule,
@@ -58,7 +61,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatSidenavModule,
     MatListModule,
     MatTooltipModule,
-
+    MatBadgeModule,
     MatTableModule,
     MatPaginatorModule,
     MatDialogModule,
@@ -86,6 +89,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatSidenavModule,
     MatListModule,
     MatTooltipModule,
+    MatBadgeModule,
 
     MatTableModule,
     MatPaginatorModule,

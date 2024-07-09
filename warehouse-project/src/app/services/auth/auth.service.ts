@@ -26,6 +26,7 @@ export class AuthService {
   login(login : iUserLogin): Observable<Response>{
     return this._http.post<Response>(`${this.url}/login`, login).pipe(
       map(res =>{
+        console.log("status: ", res.status)
         if (res.status === 1){
           console.info("login: ", login);
           const user : iUser = res.data as iUser;
@@ -51,7 +52,12 @@ export class AuthService {
 
   }
 
-
+  get isLoggin(): boolean{
+    if (JSON.parse(localStorage.getItem('user')!)){
+      return true;
+    }
+    return false;
+  }
   get userData(): Observable<iUser>{
     return this.user;
   }
@@ -59,23 +65,31 @@ export class AuthService {
     let user = JSON.parse(localStorage.getItem('user')!);
     return user.token;
   }
-  get test(){
+  get userInfo(){
     if (localStorage.getItem('user') != null){
       return JSON.parse(localStorage.getItem('user')!);
     }
     return this.userSubject.value;
   }
   get userLoginOn(): Observable<Boolean>{
-    this.verifySession().subscribe(response =>{
-      console.info("Mi responsita", response);
-      if (response.data){
-        this.currentUserLoginOn.next(true);
-      }
-      else{
-        this.currentUserLoginOn.next(false);
-      }
-    });
-    // this.userToken ? this.currentUserLoginOn.next(true) : this.currentUserLoginOn.next(false);
+
+    // this.verifySession().subscribe(response =>{
+    //   console.info("Mi responsita", response);
+    //   if (response.data){
+    //     this.currentUserLoginOn.next(true);
+    //   }
+    //   else{
+    //     this.currentUserLoginOn.next(false);
+    //   }
+    // });
+    // // this.userToken ? this.currentUserLoginOn.next(true) : this.currentUserLoginOn.next(false);
+
+    if (this.userToken){
+      this.currentUserLoginOn.next(true);
+    }
+    else{
+      this.currentUserLoginOn.next(false);
+    }
     return this.currentUserLoginOn.asObservable();
   }
 }

@@ -37,17 +37,22 @@ export class NewRequiModalComponent {
 
   //*Gets all the items from the backend
   ngOnInit(): void {
+    try{
+      this._itemService.getItems().subscribe((data: any) => {
+        console.log("The data is: ", data);
+        // catchError((err) => {
+        //   console.log("Error: ", err);
+        //   return err;
+        // }
+        // );
+        this.dataSource = data;
+        this.filteredSource = data;
+      });
+    }catch(error){
+      console.log("CACA");
+      console.log("Error: ", error);
+    }
 
-    this._itemService.getItems().subscribe((data: any) => {
-      console.log(data);
-      catchError((err) => {
-        console.log(err);
-        return err;
-      }
-      );
-      this.dataSource = data;
-      this.filteredSource = data;
-    });
 
   }
 

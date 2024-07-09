@@ -9,8 +9,9 @@ const routes: Routes = [
     {path:'', loadChildren: () => import('./public/public.module').then(x => x.PublicModule)}
   ]},
   //{ path: 'login', component: LoginComponent },
+  {path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)},
   { path: 'pages', loadChildren: () => import('./components/pages/pages.module').then(x => x.PagesModule) },
-  {path:'**',component:NotFoundComponent,pathMatch:'full'}
+  {path:'**',component:NotFoundComponent,pathMatch:'full'},
 ];
 
 @NgModule({

@@ -45,12 +45,14 @@ namespace WebService.Controllers
                 Response.Message = "Session Valid";
                 Response.Status = State.Success;
                 Response.Data = true;
+                
             }
             else
             {
                 Response.Message = "Session Invalid";
                 Response.Status = State.Error;
                 Response.Data = false;
+                
             }
             return Ok(Response);
 

@@ -9,13 +9,12 @@ import { iUserLogin } from 'src/app/core/models/iUserLogin';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
   formLogin: FormGroup;
-  hidePassword:boolean   = true;
+  hidePassword: boolean = true;
   loading: boolean = false;
-
 
   constructor(
     private fb: FormBuilder,
@@ -25,49 +24,50 @@ export class LoginComponent implements OnInit {
   ) {
     this.formLogin = this.fb.group({
       username: ['', Validators.required],
-      password: ['', Validators.required]
-    })
-    this._authService.user.subscribe((e) =>{
-      if (e){
-        this.router.navigate(['/pages'])
-      }
-    })
-  }
-
-  ngOnInit(): void {
-    this._authService.verifySession().subscribe(response =>{
-      console.info("Mi responsita", response);
-      if (response.data){
+      password: ['', Validators.required],
+    });
+    this._authService.user.subscribe((e) => {
+      if (e) {
         this.router.navigate(['/pages']);
-      }
-      else{
-        //alert("Error");
       }
     });
   }
 
-  Login(){
+  ngOnInit(): void {
+    // this._authService.verifySession().subscribe(response =>{
+    //   console.info("Mi responsita", response);
+    //   if (response.data){
+    //     this.router.navigate(['/admin']);
+    //   }
+    //   else{
+    //     //alert("Error");
+    //   }
+    // });
+  }
+
+  Login() {
     let userData = this.formLogin.value as iUserLogin;
     console.log(userData);
 
-      this._authService.login(userData).subscribe(response =>{
-        console.info(response);
-        if (response.status){
-          this._snackBar.open(response.message, "Ok", {
+    this._authService.login(userData).subscribe(
+      (response) => {
+        console.info('Response is: ', response);
+        if (response.status) {
+          this._snackBar.open(response.message, 'Ok', {
             duration: 2000,
-            panelClass: ['sucess-snackbar']
+            panelClass: ['sucess-snackbar'],
           });
           this.router.navigate(['/pages']);
         }
       },
-      error =>{
-        this._snackBar.open("Login failed", "Ok", {
+      (error) => {
+        console.error('Error is: ', error);
+        this._snackBar.open('Login failed', 'Ok', {
           duration: 2000,
-          panelClass: ['red-snackbar']
+          panelClass: ['red-snackbar'],
         });
       }
-      )
-      this.formLogin.reset();
+    );
+    this.formLogin.reset();
   }
-
 }

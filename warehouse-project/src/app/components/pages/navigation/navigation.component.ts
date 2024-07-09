@@ -36,7 +36,6 @@ export class NavigationComponent {
   verifyDepartment(){
     var Roles = new Role();
     var departments = [Roles.ADMINISTRATOR, Roles.DISPATCHER, Roles.INVENTORY_MANAGER, Roles.MANAGER, Roles.SUPERVISOR, Roles.WAREHOUSE_SUPERVISOR];
-    console.log(this.userInfo.role)
     return departments.includes(this.userInfo.role.toUpperCase());
   }
   logout(){
