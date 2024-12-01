@@ -9,7 +9,7 @@ namespace WebService.Controllers{
 
     [ApiController]
     [Route("api/[controller]")]
-    
+    [Authorize]
     public class RequirementController : ControllerBase
     {
         private readonly iRequirementService _requirementService;

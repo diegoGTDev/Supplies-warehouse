@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
     });
     this._authService.user.subscribe((e) => {
       if (e) {
-        this.router.navigate(['/pages']);
+        this.router.navigate(['/users']);
       }
     });
   }
@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
             duration: 2000,
             panelClass: ['sucess-snackbar'],
           });
-          this.router.navigate(['/pages']);
+          this.router.navigate(['/users']);
         }
       },
       (error) => {

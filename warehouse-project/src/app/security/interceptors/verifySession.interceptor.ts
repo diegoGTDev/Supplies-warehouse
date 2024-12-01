@@ -12,22 +12,21 @@ import { Observable, of, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth/auth.service';
-
+import { MatDialog } from '@angular/material/dialog';
 @Injectable()
 export class verifySessionInterceptor implements HttpInterceptor {
   constructor(
     private _router: Router,
     private _authService: AuthService,
-    private _snackbar: MatSnackBar
+    private _snackbar: MatSnackBar,
+    private _dialog: MatDialog
   ) {}
   private handleAuthError(error: HttpErrorResponse): Observable<any> {
-    //handle your auth error or rethrow
-    console.log("CAQUITA");
-    console.log("The status is: ", error.status);
 
-    if (error.status === 401 || error.status === 403) {
-      console.log("Enter caquita");
-      this._snackbar.open('Session expired', 'Close', {duration: 2000, panelClass: ['red-snackbar'], verticalPosition: 'top'})
+    if (error.status === 401 || error.status === 403 || error.status === 0) {
+      this._snackbar.open('Session expired', 'Close', {duration: 2000, panelClass: ['red-snackbar'], verticalPosition: 'top'});
+      //Cerramos todos los dialogos abiertos
+      this._dialog.closeAll();
       this._router.navigate(['/login']);
       this._authService.logout();
       return of(error.message);

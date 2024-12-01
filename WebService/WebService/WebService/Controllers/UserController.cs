@@ -19,7 +19,13 @@ namespace WebService.Controllers
         public IActionResult Login([FromBody] AuthRequest authRequest)
         {
             var Response = new Response();
-            Console.WriteLine("Request is: ", authRequest.Username);
+            if (authRequest == null)
+            {
+                Response.Message = "Invalid Request";
+                Response.Status = State.Error;
+                Response.Data = null;
+                return BadRequest(Response);
+            }
             Response.Data = _userService.Auth(authRequest);
             if (Response.Data != null)
             {

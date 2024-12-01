@@ -1,11 +1,9 @@
-﻿using System.Security.Claims;
+﻿
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using WebService.Data;
-using WebService.Models;
+using WebService.Models.Response;
 using WebService.Services;
+using WebsServices.Requests;
 
 namespace WebService.Controllers
 {
@@ -24,7 +22,28 @@ namespace WebService.Controllers
         [Authorize(Roles = "Administrator, Manager, Supervisor, Warehouse Supervisor, Inventory Manager, Dispatcher")]
         public IActionResult Get()
         {
-            return Ok(_itemService.Get());
+            Response res = new Response();
+            res.Status = State.Success;
+            res.Message = "Items found";
+            return Ok(_itemService.GetAll());
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Administrator, Manager, Warehouse Supervisor, Inventory Manager")]
+        public IActionResult Post([FromBody] ItemRequest item)
+        {
+            Response res = new Response();
+            try{
+                _itemService.Add(item);
+                res.Status = State.Success;
+                res.Message = "Item added";
+            }
+            catch(System.Exception ex){
+                res.Status = State.Error;
+                res.Message = ex.Message;
+                return BadRequest(res);
+            }
+            return Ok(res);
         }
     }
 }

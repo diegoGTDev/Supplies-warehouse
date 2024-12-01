@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReusableModule } from '../components/reusable/reusable.module';
+import { ReusableModule } from '../reusable/reusable.module';
 import { PublicRoutingModule } from './public-routing.module';
 import { PublicComponent } from './public.component';
 import { LoginComponent } from './auth/login/containers/login/login.component';

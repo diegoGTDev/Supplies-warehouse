@@ -52,11 +52,6 @@ C:\Users\PC\Documents\Programacion\Portfolio\Bodega de Insumos\App_Bodega\WebSer
 C:\Users\PC\Documents\Programacion\Portfolio\Bodega de Insumos\App_Bodega\WebService\WebService\WebService\obj\Debug\net6.0\WebService.csproj.CoreCompileInputs.cache
 C:\Users\PC\Documents\Programacion\Portfolio\Bodega de Insumos\App_Bodega\WebService\WebService\WebService\obj\Debug\net6.0\WebService.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\PC\Documents\Programacion\Portfolio\Bodega de Insumos\App_Bodega\WebService\WebService\WebService\obj\Debug\net6.0\WebService.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\PC\Documents\Programacion\Portfolio\Bodega de Insumos\App_Bodega\WebService\WebService\WebService\obj\Debug\net6.0\staticwebassets\msbuild.WebService.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Users\PC\Documents\Programacion\Portfolio\Bodega de Insumos\App_Bodega\WebService\WebService\WebService\obj\Debug\net6.0\staticwebassets\msbuild.build.WebService.props
-C:\Users\PC\Documents\Programacion\Portfolio\Bodega de Insumos\App_Bodega\WebService\WebService\WebService\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.WebService.props
-C:\Users\PC\Documents\Programacion\Portfolio\Bodega de Insumos\App_Bodega\WebService\WebService\WebService\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.WebService.props
-C:\Users\PC\Documents\Programacion\Portfolio\Bodega de Insumos\App_Bodega\WebService\WebService\WebService\obj\Debug\net6.0\staticwebassets.pack.json
 C:\Users\PC\Documents\Programacion\Portfolio\Bodega de Insumos\App_Bodega\WebService\WebService\WebService\obj\Debug\net6.0\staticwebassets.build.json
 C:\Users\PC\Documents\Programacion\Portfolio\Bodega de Insumos\App_Bodega\WebService\WebService\WebService\obj\Debug\net6.0\staticwebassets.development.json
 C:\Users\PC\Documents\Programacion\Portfolio\Bodega de Insumos\App_Bodega\WebService\WebService\WebService\obj\Debug\net6.0\scopedcss\bundle\WebService.styles.css

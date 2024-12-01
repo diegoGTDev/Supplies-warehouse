@@ -1,0 +1,51 @@
+<app-title-container>Nuevo elemento</app-title-container>
+<app-container-layout>
+  <form class="form" [formGroup]="form" action="">
+    <mat-form-field>
+      <mat-label>Código</mat-label>
+      <input matInput formControlName="code">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="name">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Stock</mat-label>
+      <input matInput formControlName="stock">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Categoría</mat-label>
+      <mat-select formControlName="category">
+        <mat-option value="herramientas">Herramientas</mat-option>
+        <mat-option value="materiales">Materiales</mat-option>
+        <mat-option value="otros">Otros</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Descripción</mat-label>
+      <input matInput formControlName="description">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Material</mat-label>
+      <mat-select formControlName="material">
+        <mat-option value="madera">Madera</mat-option>
+        <mat-option value="metal">Metal</mat-option>
+        <mat-option value="plástico">Plástico</mat-option>
+      </mat-select>
+    </mat-form-field >
+    <mat-form-field>
+      <mat-label>Measure</mat-label>
+      <mat-select>
+        <mat-option value="cm">cm</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Location</mat-label>
+      <mat-select>
+        <mat-option value="Atras de la puerta">at-2-2</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary">Agregar</button>
+    <button mat-raised-button color="warn">Limpiar</button>
+  </form>
+</app-container-layout>

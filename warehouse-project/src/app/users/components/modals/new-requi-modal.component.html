@@ -1,0 +1,45 @@
+<div>
+  <h1 mat-dialog-title>Agregar</h1>
+  <div mat-dialog-content>
+    <form [formGroup]="requi_item_form" class="form">
+      <mat-form-field>
+        <mat-label>Código</mat-label>
+        <input matInput formControlName="code" (ngModelChange)="searchItem()">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="name" (ngModelChange)="searchItem()">
+      </mat-form-field>
+    </form>
+    <div class="table-container">
+      <table style="width: 100%;text-align: center;">
+        <thead>
+          <tr>
+              <th>Código</th>
+              <th>Nombre</th>
+              <th>Descripción</th>
+              <th>Categoría</th>
+              <th>Disponible</th>
+              <th>Medida</th>
+              <th>Material</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="cursor:pointer " *ngFor="let item of filteredSource; let i = index" (click) = "getItemSelected($event)">
+            <td class="item-code">{{item.code}}</td>
+            <td class="item-name">{{item.name}}</td>
+            <td class="item-description">{{item.description}}</td>
+            <td class="item-category">{{item.category}}</td>
+            <td class="item-quantity">{{item.quantity}}</td>
+            <td class="item-measure">{{item.measure}}</td>
+            <td class="item-material">{{item.material}}</td>
+          </tr>
+        </tbody>
+    </table>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-raised-button color="primary">Agregar</button>
+      <button mat-raised-button color="warn" (click)="close()">Cancelar</button>
+    </div>
+  </div>
+</div>

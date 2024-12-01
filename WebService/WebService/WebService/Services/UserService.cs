@@ -26,37 +26,45 @@ namespace WebService.Services
         }
         public UserResponse Auth(AuthRequest authRequest)
         {
-            Console.WriteLine("Request is: ", authRequest.Username);
             UserResponse userresponse = new UserResponse();
-            using (var db = new db_warehouseContext())
+            try
             {
-                string spassword = Encrypt.GetSHA256(authRequest.Password);
-                // var usuario = db.Accounts.Where(d => d.Name == authRequest.Username && d.Password == spassword).FirstOrDefault();
-                
-                var usuario = db.Accounts.Where(
-                    d => d.Name == authRequest.Username && d.Password == spassword).SelectMany(
+                Console.WriteLine("Request is: ", authRequest.Username);
+                using (var db = new db_warehouseContext())
+                {
+                    string spassword = Encrypt.GetSHA256(authRequest.Password);
+                    // var usuario = db.Accounts.Where(d => d.Name == authRequest.Username && d.Password == spassword).FirstOrDefault();
 
-                    u => db.Roles.Where(
-                          r => u.Role == r.RoleId)
-                          .SelectMany(
-                            d => db.Departments.Where(
-                                d => u.Department == d.DepartmentId)
-                                .Select(t1 => new User
-                                {
-                                    Id = u.AccId,
-                                    Name = u.Name,
-                                    Role = d.Name,
-                                    Department = t1.Name
-                                }))).FirstOrDefault();
+                    var usuario = db.Accounts.Where(
+                        d => d.Name == authRequest.Username && d.Password == spassword).SelectMany(
 
-                if (usuario == null) { return null; }
-                userresponse.UserName = usuario.Name;
-                Console.WriteLine("Usuario ROL: " + usuario.Role);
-                Console.WriteLine("Usuario DEP: " + usuario.Department);
-                userresponse.Role = usuario.Role;
-                userresponse.Token = this.GetToken(usuario);
-                userresponse.Department = usuario.Department;
-        
+                        u => db.Roles.Where(
+                              r => u.Role == r.RoleId)
+                              .SelectMany(
+                                d => db.Departments.Where(
+                                    d => u.Department == d.DepartmentId)
+                                    .Select(t1 => new User
+                                    {
+                                        Id = u.AccId,
+                                        Name = u.Name,
+                                        Role = d.Name,
+                                        Department = t1.Name
+                                    }))).FirstOrDefault();
+
+                    if (usuario == null) { return null; }
+                    userresponse.UserName = usuario.Name;
+                    Console.WriteLine("Usuario ROL: " + usuario.Role);
+                    Console.WriteLine("Usuario DEP: " + usuario.Department);
+                    userresponse.Role = usuario.Role;
+                    userresponse.Token = this.GetToken(usuario);
+                    userresponse.Department = usuario.Department;
+
+                   
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: " + e.Message);
             }
             return userresponse;
         }
@@ -105,7 +113,7 @@ namespace WebService.Services
                         new Claim("Department", account.Department.ToString())
                     }
                     ),
-                Expires = DateTime.UtcNow.AddSeconds(20),
+                Expires = DateTime.UtcNow.AddDays(1),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(uKey), SecurityAlgorithms.HmacSha256Signature)
             };
             var token = tokenHandler.CreateToken(tokenDescriptor);

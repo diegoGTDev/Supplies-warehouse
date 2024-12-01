@@ -4,18 +4,18 @@
     </div>
     <div class="login-container">
       <div class="login-container-title">
-        <h1>Welcome</h1>
+        <h1 class="login-title">Bienvenido</h1>
       </div>
       <div class="login-form-wrapper">
         <form name="loginForm" [formGroup]="formLogin">
           <div>
             <mat-form-field class="full-width" appearance="outline">
-              <mat-label>Username</mat-label>
+              <mat-label>Nombre de usuario</mat-label>
               <input formControlName="username" matInput autocomplete="off" />
               <mat-icon matSuffix>mail</mat-icon>
             </mat-form-field>
             <mat-form-field class="full-width" appearance="outline">
-              <mat-label>Password</mat-label>
+              <mat-label>Contraseña</mat-label>
               <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password" autocomplete="off">
               <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword" type="button">
                 <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -29,7 +29,7 @@
         </form>
       </div>
       <div class="forgot-password-container">
-        <a href="/#">Forgot your password?</a>
+        <a href="/#">¿Olvidaste tu contraseña?</a>
       </div>
     </div>
 </div>
