@@ -29,7 +29,7 @@ namespace WebService.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "Administrator, Manager, Warehouse Supervisor, Inventory Manager")]
+        [Authorize(Roles = "Administrator, Manager, Supervisor, Warehouse Supervisor, Inventory Manager, Dispatcher")]
         public IActionResult Post([FromBody] ItemRequest item)
         {
             Response res = new Response();

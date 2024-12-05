@@ -1,6 +1,6 @@
 <app-title-container>Nuevo elemento</app-title-container>
 <app-container-layout>
-  <form class="form" [formGroup]="form" action="">
+  <form class="form" [formGroup]="form">
     <mat-form-field>
       <mat-label>Código</mat-label>
       <input matInput formControlName="code">
@@ -16,9 +16,7 @@
     <mat-form-field appearance="fill">
       <mat-label>Categoría</mat-label>
       <mat-select formControlName="category">
-        <mat-option value="herramientas">Herramientas</mat-option>
-        <mat-option value="materiales">Materiales</mat-option>
-        <mat-option value="otros">Otros</mat-option>
+        <mat-option *ngFor="let category of categories" [value]="category">{{category}}</mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field appearance="fill" class="full-width">
@@ -28,21 +26,25 @@
     <mat-form-field appearance="fill">
       <mat-label>Material</mat-label>
       <mat-select formControlName="material">
-        <mat-option value="madera">Madera</mat-option>
-        <mat-option value="metal">Metal</mat-option>
-        <mat-option value="plástico">Plástico</mat-option>
+        <mat-option *ngFor ="let material of materials" [value]="material">
+          {{material}}
+        </mat-option>
       </mat-select>
     </mat-form-field >
     <mat-form-field>
       <mat-label>Measure</mat-label>
       <mat-select>
-        <mat-option value="cm">cm</mat-option>
+        <mat-option *ngFor="let measure of measures" [value]="measure">
+          {{measure}}
+        </mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Location</mat-label>
       <mat-select>
-        <mat-option value="Atras de la puerta">at-2-2</mat-option>
+      <mat-option *ngFor="let location of locations" [value]="location">
+        {{ location }}
+      </mat-option>
       </mat-select>
     </mat-form-field>
     <button mat-raised-button color="primary">Agregar</button>
