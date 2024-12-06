@@ -59,7 +59,7 @@ export class InventoryComponent {
   //OnSubmit
   onSubmit(){
     var form = this.form.value;
-    console.info("The form is: ", form);
+    console.info("The form is: ", this.form.invalid);
     this.item = {
       code : form.code? form.code : '',
       name : form.name? form.name : '',
@@ -70,7 +70,15 @@ export class InventoryComponent {
       location: form.location? form.location : '',
       quantity: Number(form.stock)
     }
-    console.info("The item is: ", this.item);
+    //check if some of the fields are empty
+    if(this.item.code == '' || this.item.name == '' || this.item.description == '' || this.item.category == '' || this.item.measure == '' || this.item.material == '' || this.item.location == '' || this.item.quantity == 0){
+      this._snackBar.open("Some fields are empty", "Close", {
+        duration: 2000,
+        panelClass: ['red-snackbar']
+      });
+      return;
+    }
+
     this._itemService.post(this.item).subscribe(
         (data) => {
           console.log(data);
