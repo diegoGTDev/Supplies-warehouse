@@ -3,8 +3,8 @@ export interface Iitem{
     name : string;
     description: string;
     category : string;
-    measure: number;
+    measure: string;
     material: string;
     location: string;
-    units: number;
+    quantity: number;
 }

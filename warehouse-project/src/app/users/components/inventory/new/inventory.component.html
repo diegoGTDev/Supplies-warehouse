@@ -11,7 +11,7 @@
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Stock</mat-label>
-      <input matInput formControlName="stock">
+      <input matInput type=number formControlName="stock">
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Categoría</mat-label>
@@ -33,7 +33,7 @@
     </mat-form-field >
     <mat-form-field>
       <mat-label>Measure</mat-label>
-      <mat-select>
+      <mat-select formControlName="measure">
         <mat-option *ngFor="let measure of measures" [value]="measure">
           {{measure}}
         </mat-option>
@@ -41,13 +41,13 @@
     </mat-form-field>
     <mat-form-field>
       <mat-label>Location</mat-label>
-      <mat-select>
+      <mat-select formControlName="location">
       <mat-option *ngFor="let location of locations" [value]="location">
         {{ location }}
       </mat-option>
       </mat-select>
     </mat-form-field>
-    <button mat-raised-button color="primary">Agregar</button>
-    <button mat-raised-button color="warn">Limpiar</button>
+    <button mat-raised-button color="primary" (click)="onSubmit()">Agregar</button>
+    <button mat-raised-button color="warn" (click)="limpiar()">Limpiar</button>
   </form>
 </app-container-layout>

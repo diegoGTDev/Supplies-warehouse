@@ -49,7 +49,7 @@ export class RequirementRequestComponent {
     this.dataSource.data = this.itemsRequested;
     this.isEditing = Array(this.dataSource.data.length).fill(false);
     this.editedData = this.dataSource.data.map((item) => ({
-      units: item.units,
+      units: item.quantity,
     }));
     this._auth.userData.subscribe(user => {
       this.userInfo.department = user.department;
@@ -61,7 +61,7 @@ export class RequirementRequestComponent {
       user: this.userInfo?.userName,
       description: 'Description',
       status: Status.Open,
-      concepts: this.itemsRequested.map((item) => ({ "supply_code": item.code, "units": item.units })),
+      concepts: this.itemsRequested.map((item) => ({ "supply_code": item.code, "units": item.quantity })),
     };
   }
   openModal() {
@@ -72,7 +72,7 @@ export class RequirementRequestComponent {
 
     dialogRef.afterClosed().subscribe((result) => {
       this.editedData = this.dataSource.data.map((item) => ({
-        units: item.units,
+        units: item.quantity,
       }));
       this.dataSource.data = this.itemsRequested;
     });
@@ -82,7 +82,7 @@ export class RequirementRequestComponent {
   test() {
     console.log(this.itemsRequested);
     this.dataSource.data = this.itemsRequested;
-    this.requirement.concepts = this.itemsRequested.map((item) => ({ "supply_code": item.code, "units": item.units }));
+    this.requirement.concepts = this.itemsRequested.map((item) => ({ "supply_code": item.code, "units": item.quantity }));
     this.requirement.description = this._requiForm.value.description
       ? this._requiForm.value.description
       : this.requirement.description;
@@ -108,7 +108,7 @@ export class RequirementRequestComponent {
     // If everything is ok, sends the requirement to the service
     else{
       message = 'Requirement done';
-      this.requirement.concepts = this.itemsRequested.map((item) => ({ "supply_code": item.code, "units": item.units }));
+      this.requirement.concepts = this.itemsRequested.map((item) => ({ "supply_code": item.code, "units": item.quantity }));
       this.requirement.description = this._requiForm.value.description
       ? this._requiForm.value.description
       : this.requirement.description;
@@ -123,7 +123,7 @@ export class RequirementRequestComponent {
         duration: 1500,
         horizontalPosition: 'center',
         verticalPosition: 'top',
-        panelClass: warning ? ['red-snackbar'] : ['sucess-snackbar']
+        panelClass: warning ? ['red-snackbar'] : ['success-snackbar']
 
       });
   }
@@ -146,6 +146,6 @@ export class RequirementRequestComponent {
     const newValue = this.editedData[index].units;
 
     // Actualiza la fuente de datos con el nuevo valor
-    this.dataSource.data[index].units = newValue;
+    this.dataSource.data[index].quantity = newValue;
   }
 }

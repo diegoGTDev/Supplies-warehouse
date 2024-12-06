@@ -34,15 +34,6 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this._authService.verifySession().subscribe(response =>{
-    //   console.info("Mi responsita", response);
-    //   if (response.data){
-    //     this.router.navigate(['/admin']);
-    //   }
-    //   else{
-    //     //alert("Error");
-    //   }
-    // });
   }
 
   Login() {
@@ -55,7 +46,7 @@ export class LoginComponent implements OnInit {
         if (response.status) {
           this._snackBar.open(response.message, 'Ok', {
             duration: 2000,
-            panelClass: ['sucess-snackbar'],
+            panelClass: ['success-snackbar'],
           });
           this.router.navigate(['/users']);
         }
